@@ -20,12 +20,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ListingService {
 
-  @Value("${max.list.price.limit}")
-  private int maximumLimit;
-
-  @Value("${min.list.price.limit}")
-  private int minLimit;
-
   @Autowired
   private ItemService itemService;
 
@@ -55,38 +49,6 @@ public class ListingService {
     } catch (Exception exception) {
       return itemService.getItemListWithErrorMessage("Unable to list item " + itemId);
     }
-
-    /*Item item = null;
-    Item_Table updatedItem = null;
-    if (!StringUtils.isEmpty(item_Id)) {
-
-      Item_Table fetchedItem = itemService.findListedItemsByItemId(item_Id);
-      if (fetchedItem == null) {
-        item = itemService.getItemListWithErrorMessage("Could not find item " + item_Id);
-        return item;
-      }
-      if (StringUtils.equalsIgnoreCase(fetchedItem.getStatus(), Item_Status.FOR_SALE.name())) {
-        item = itemService.getItemListWithErrorMessage(
-            "Item_Table " + item_Id + " is already listed");
-        return item;
-      }
-      if (fetchedItem.getLastTransactionDate() != null && StringUtils.equalsIgnoreCase(
-          fetchedItem.getLastTransactionDate().toString(), LocalDate.now().toString())) {
-        item = itemService.getItemListWithErrorMessage(
-            "Cannot list Item_Table " + item_Id + " before 24 hours");
-        return item;
-      }
-      updatedItem = fetchedItem;
-      updatedItem.setUserId(null);
-      updatedItem.setStatus(Item_Status.FOR_SALE.name());
-      updatedItem = itemService.updateItem(updatedItem);
-      return itemBuilder.buildItem(updatedItem);
-
-    } else {
-      item.setStatus("ItemId cannot be blank");
-    }
-*/
-    //return item;
   }
 
   public List<Item> findListedItemsByStatus(String status) {
