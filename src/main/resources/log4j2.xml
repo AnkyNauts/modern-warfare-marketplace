@@ -1,0 +1,28 @@
+<Configuration monitorInterval="60">
+
+  <Appenders>
+    <Console name="Console-Appender" target="SYSTEM_OUT">
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+    </Console>
+    <Log4j2Appender name="Log4j2Appender">
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+      <verbose>false</verbose>
+      <tags>TEST</tags>
+      <stagingBufferSize>20000</stagingBufferSize>
+      <stagingBufferAge>5</stagingBufferAge>
+      <s3Compression>false</s3Compression>
+    </Log4j2Appender>
+  </Appenders>
+
+  <Loggers>
+    <Logger name="com.instarem" level="info" additivity="false">
+      <AppenderRef ref="Console-Appender"/>
+      <AppenderRef ref="Log4j2Appender"/>
+    </Logger>
+
+    <Root level="info">
+      <AppenderRef ref="Console-Appender"/>
+      <AppenderRef ref="Log4j2Appender"/>
+    </Root>
+  </Loggers>
+</Configuration>
