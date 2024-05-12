@@ -6,15 +6,11 @@ import com.demo.dto.PropertyConstant;
 import com.demo.exception.InvalidItemException;
 import com.demo.model.ActionType;
 import com.demo.model.Item_Table;
-import com.demo.model.Item_Status;
 import com.demo.process.ActionState;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,7 +29,7 @@ public class ListingService {
   private List<ActionState> handlerList;
 
 
-  public Item listItem(String itemId, String price) {
+  public Item listItem(Integer itemId, Integer price) {
     Map<String, Object> resultMap = new HashMap<>();
     resultMap.put(PropertyConstant.PRICE.name(), price);
     try {

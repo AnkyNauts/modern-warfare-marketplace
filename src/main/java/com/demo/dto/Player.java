@@ -1,7 +1,8 @@
 package com.demo.dto;
 
-import com.demo.dto.User;
+import lombok.Data;
 
+@Data
 public class Player extends User {
 
   private int earnMargin;

@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,7 +32,7 @@ public class PurchaseService {
   @Autowired(required = false)
   private List<ActionState> handlerList;
 
-  public Item purchaseItem(String userId, String itemId) {
+  public Item purchaseItem(Integer userId, Integer itemId) {
     Map<String, Object> resultMap = new HashMap<>();
     try {
       for (ActionState state : handlerList) {

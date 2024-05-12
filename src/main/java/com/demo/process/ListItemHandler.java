@@ -20,8 +20,8 @@ public class ListItemHandler implements ActionState {
   private ItemService itemService;
 
   @Override
-  public void performAction(String userId, String itemId, Map<String, Object> propertiesMap) {
-    if (!StringUtils.isEmpty(itemId)) {
+  public void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap) {
+    if (itemId==null) {
       Item_Table fetchedItem = itemService.findListedItemsByItemId(itemId);
       if (fetchedItem == null) {
         throw new InvalidItemException("Could not find item " + itemId);

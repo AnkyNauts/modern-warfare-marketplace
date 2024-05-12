@@ -22,11 +22,11 @@ public class ItemService {
     return itemBuilder.buildItemList(itemTableList);
   }
 
-  public Item_Table findListedItemsByItemId(String itemId) {
+  public Item_Table findListedItemsByItemId(Integer itemId) {
     return itemRepository.findByItemId(itemId);
   }
 
-  public List<Item> findListedItemsByUserIdAndStatus(String userId, String status) {
+  public List<Item> findListedItemsByUserIdAndStatus(Integer userId, String status) {
     List<Item_Table> itemTableList = itemRepository.findByUserIdAndStatus(userId, status);
     return itemBuilder.buildItemList(itemTableList);
   }

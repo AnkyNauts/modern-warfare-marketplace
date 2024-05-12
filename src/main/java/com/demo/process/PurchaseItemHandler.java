@@ -24,7 +24,7 @@ public class PurchaseItemHandler implements ActionState {
   private ItemService itemService;
 
   @Override
-  public void performAction(String userId, String itemId, Map<String, Object> propertiesMap) {
+  public void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap) {
     Item_Table fetchedItem = itemService.findListedItemsByItemId(itemId);
 
     if (fetchedItem == null) {

@@ -10,7 +10,7 @@ public class FetchService {
   @Autowired
   private UserService userService;
 
-  public User fetchAllItemsByUser(String userId){
+  public User fetchAllItemsByUser(Integer userId){
     return userService.fetchAllItemsByUser(userId);
   }
 

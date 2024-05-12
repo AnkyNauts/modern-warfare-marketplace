@@ -1,14 +1,11 @@
 package com.demo.process;
 
 import com.demo.dto.PropertyConstant;
-import com.demo.exception.InvalidItemException;
 import com.demo.model.ActionType;
 import com.demo.model.Item_Status;
 import com.demo.model.Item_Table;
-import com.demo.model.User_Account;
 import com.demo.service.ItemService;
 import java.util.Map;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -21,7 +18,7 @@ public class ListItem implements ActionState {
   private ItemService itemService;
 
   @Override
-  public void performAction(String userId, String itemId, Map<String, Object> propertiesMap) {
+  public void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap) {
     Item_Table itemTable = (Item_Table) propertiesMap.get(PropertyConstant.ITEM_TABLE.name());
 
     itemTable.setUserId(null);

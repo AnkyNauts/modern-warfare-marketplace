@@ -48,20 +48,20 @@ public class ItemController {
   }
 
   // list a item
-  @PostMapping("/list/{item_id}/{price}")
-  public ResponseEntity<ResponseBody> listAnItem(@PathVariable String item_id,@PathVariable String price) {
+  @PostMapping("/list/{itemId}/{price}")
+  public ResponseEntity<ResponseBody> listAnItem(@PathVariable Integer itemId,@PathVariable Integer price) {
     try {
-      return new ResponseEntity<>(actionService.performListItem(item_id,price), HttpStatus.OK);
+      return new ResponseEntity<>(actionService.performListItem(itemId,price), HttpStatus.OK);
     } catch (Exception exception) {
       return new ResponseEntity<>(
-          actionService.fetchItemResponseWithErrorMessage("Could not list item " + item_id),
+          actionService.fetchItemResponseWithErrorMessage("Could not list item " + itemId),
           HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
   }
 
   @GetMapping("/{user_id}")
-  public ResponseEntity<ResponseBody> fetchAllItemsByUser(@PathVariable String user_id) {
+  public ResponseEntity<ResponseBody> fetchAllItemsByUser(@PathVariable Integer user_id) {
     try {
       return new ResponseEntity<>(
           actionService.performFetchItem(user_id),
@@ -75,8 +75,8 @@ public class ItemController {
   }
 
   @PostMapping("/purchase/{user_id}/{item_id}")
-  public ResponseEntity<ResponseBody> purchaseItem(@PathVariable("user_id") String user_id,
-      @PathVariable("item_id") String item_id) {
+  public ResponseEntity<ResponseBody> purchaseItem(@PathVariable("user_id") Integer user_id,
+      @PathVariable("item_id") Integer item_id) {
     try {
       return new ResponseEntity<>(
           actionService.performPurchaseItem(user_id, item_id),

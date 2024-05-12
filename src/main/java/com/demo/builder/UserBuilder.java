@@ -10,15 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserBuilder {
 
-/*
-  public User buildUser(User_Account userAccount, List<Item_Table> itemList) {
-    User user = new User();
-    BeanUtils.copyProperties(userAccount, user);
-    user.setItemList(itemList);
-    return user;
-  }
-*/
-
   public User buildUser(User_Account userAccount, List<Item> itemList) {
     User user = new User();
     BeanUtils.copyProperties(userAccount, user);

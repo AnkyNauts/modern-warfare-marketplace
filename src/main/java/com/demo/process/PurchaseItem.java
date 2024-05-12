@@ -28,7 +28,7 @@ public class PurchaseItem implements ActionState {
   private ItemBuilder itemBuilder;
 
   @Override
-  public void performAction(String userId, String itemId, Map<String, Object> propertiesMap) {
+  public void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap) {
     Item_Table fetchedItem = (Item_Table) propertiesMap.get(PropertyConstant.ITEM_TABLE.name());
 
     User_Account userAccount = (User_Account) propertiesMap.get(

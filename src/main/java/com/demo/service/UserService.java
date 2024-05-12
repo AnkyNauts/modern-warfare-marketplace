@@ -9,7 +9,6 @@ import com.demo.model.User_Account;
 import com.demo.repository.UserRepository;
 import java.util.Arrays;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,12 +26,12 @@ public class UserService {
   @Autowired
   private UserBuilder userBuilder;
 
-  public User_Account findUserByUserId(String userId) {
+  public User_Account findUserByUserId(Integer userId) {
     return userRepository.findUserByUserId(userId);
   }
 
-  public List<Item> findAllItemsByUserId(String userId) {
-    if (!StringUtils.isEmpty(userId)) {
+  public List<Item> findAllItemsByUserId(Integer userId) {
+    if (userId!=null) {
       List<Item> items = itemService.findListedItemsByUserIdAndStatus(userId,
           Item_Status.PURCHASED.name());
       if (CollectionUtils.isEmpty(items)) {
@@ -44,7 +43,7 @@ public class UserService {
     return Arrays.asList(itemService.getItemListWithErrorMessage("UserId not found"));
   }
 
-  public User fetchAllItemsByUser(String userId) {
+  public User fetchAllItemsByUser(Integer userId) {
     User user = new User();
     User_Account userAccount = findUserByUserId(userId);
     if (userAccount != null) {

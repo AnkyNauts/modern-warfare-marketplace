@@ -6,7 +6,6 @@ import com.demo.model.ActionType;
 import com.demo.model.User_Account;
 import com.demo.service.UserService;
 import java.util.Map;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -19,8 +18,8 @@ public class PurchaseUserAccountHandler implements ActionState {
   private UserService userService;
 
   @Override
-  public void performAction(String userId, String itemId, Map<String, Object> propertiesMap) {
-    if (!StringUtils.isEmpty(userId) || !StringUtils.isEmpty(itemId)) {
+  public void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap) {
+    if (userId!=null || itemId!=null) {
       User_Account userAccount = userService.findUserByUserId(userId);
       if (userAccount == null) {
         throw new InvalidItemException("Could not find user " + userId);

@@ -23,7 +23,7 @@ public class UserLastPurchaseDateHandler implements ActionState {
   private ItemService itemService;
 
   @Override
-  public void performAction(String userId, String itemId, Map<String, Object> propertiesMap) {
+  public void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap) {
     User_Account userAccount = (User_Account) propertiesMap.get(PropertyConstant.USER_ACCOUNT.name());
     if (userAccount.getLastPurchaseDate().equals(LocalDate.now())) {
       throw new InvalidItemException("Limit for this month is crossed, Cannot buy item " + itemId);

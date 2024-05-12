@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface ActionState {
 
-  void performAction(String userId, String itemId, Map<String, Object> propertiesMap);
+  void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap);
 
   ActionType getActionType();
 
