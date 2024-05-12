@@ -10,10 +10,10 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.sample</groupId>
-  <artifactId>spring-data-jpa-postgres</artifactId>
+  <artifactId>modern-warfare-marketplace</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>postgress</name>
-  <description>Demo project for Spring Boot</description>
+  <name>modern-warfare-marketplace</name>
+  <description>Designing a sample marketplace for players to transact their weapons</description>
 
   <properties>
     <java.version>1.8</java.version>

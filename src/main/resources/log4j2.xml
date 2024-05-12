@@ -15,7 +15,7 @@
   </Appenders>
 
   <Loggers>
-    <Logger name="com.instarem" level="info" additivity="false">
+    <Logger name="com.demo" level="info" additivity="false">
       <AppenderRef ref="Console-Appender"/>
       <AppenderRef ref="Log4j2Appender"/>
     </Logger>
