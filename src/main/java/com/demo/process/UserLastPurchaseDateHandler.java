@@ -3,7 +3,7 @@ package com.demo.process;
 import com.demo.dto.PropertyConstant;
 import com.demo.exception.InvalidItemException;
 import com.demo.model.ActionType;
-import com.demo.model.User_Account;
+import com.demo.model.UserAccount;
 import com.demo.service.ItemService;
 import com.demo.service.UserService;
 import java.time.LocalDate;
@@ -24,7 +24,7 @@ public class UserLastPurchaseDateHandler implements ActionState {
 
   @Override
   public void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap) {
-    User_Account userAccount = (User_Account) propertiesMap.get(PropertyConstant.USER_ACCOUNT.name());
+    UserAccount userAccount = (UserAccount) propertiesMap.get(PropertyConstant.USER_ACCOUNT.name());
     if (userAccount.getLastPurchaseDate().equals(LocalDate.now())) {
       throw new InvalidItemException("Limit for this month is crossed, Cannot buy item " + itemId);
 

@@ -1,16 +1,16 @@
 package com.demo.repository;
 
-import com.demo.model.Item_Table;
+import com.demo.model.ItemTable;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 // Spring Data JPA creates CRUD implementation at runtime automatically.
-public interface ItemRepository extends JpaRepository<Item_Table, Integer> {
+public interface ItemRepository extends JpaRepository<ItemTable, Integer> {
 
-    List<Item_Table> findByStatus(String status);
+    List<ItemTable> findByStatus(String status);
 
-    List<Item_Table> findByUserIdAndStatus(Integer userId,String status);
+    List<ItemTable> findByUserIdAndStatus(Integer userId,String status);
 
-    Item_Table findByItemId(Integer itemId);
+    ItemTable findByItemId(Integer itemId);
 
 }

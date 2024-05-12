@@ -3,7 +3,7 @@ package com.demo.process;
 import com.demo.dto.PropertyConstant;
 import com.demo.exception.InvalidItemException;
 import com.demo.model.ActionType;
-import com.demo.model.User_Account;
+import com.demo.model.UserAccount;
 import com.demo.service.UserService;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class PurchaseUserAccountHandler implements ActionState {
   @Override
   public void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap) {
     if (userId!=null || itemId!=null) {
-      User_Account userAccount = userService.findUserByUserId(userId);
+      UserAccount userAccount = userService.findUserByUserId(userId);
       if (userAccount == null) {
         throw new InvalidItemException("Could not find user " + userId);
       }

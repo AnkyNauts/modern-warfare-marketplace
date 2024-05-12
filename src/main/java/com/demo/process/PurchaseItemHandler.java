@@ -3,8 +3,8 @@ package com.demo.process;
 import com.demo.dto.PropertyConstant;
 import com.demo.exception.InvalidItemException;
 import com.demo.model.ActionType;
-import com.demo.model.Item_Status;
-import com.demo.model.Item_Table;
+import com.demo.model.ItemStatus;
+import com.demo.model.ItemTable;
 import com.demo.service.ItemService;
 import com.demo.service.UserService;
 import java.util.Map;
@@ -25,13 +25,13 @@ public class PurchaseItemHandler implements ActionState {
 
   @Override
   public void performAction(Integer userId, Integer itemId, Map<String, Object> propertiesMap) {
-    Item_Table fetchedItem = itemService.findListedItemsByItemId(itemId);
+    ItemTable fetchedItem = itemService.findListedItemsByItemId(itemId);
 
     if (fetchedItem == null) {
       throw new InvalidItemException("Could not find item " + itemId);
     }
-    if (StringUtils.equalsIgnoreCase(fetchedItem.getStatus(), Item_Status.PURCHASED.name())) {
-      throw new InvalidItemException("Item_Table " + itemId + " is already purchased");
+    if (StringUtils.equalsIgnoreCase(fetchedItem.getStatus(), ItemStatus.PURCHASED.name())) {
+      throw new InvalidItemException("Item " + itemId + " is already purchased");
     }
 
     propertiesMap.put(PropertyConstant.ITEM_TABLE.name(), fetchedItem);

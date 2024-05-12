@@ -20,7 +20,7 @@ public class Transaction {
 
   @Override
   public String toString() {
-    return "Item_Table{" +
+    return "ItemTable{" +
         "id=" + id +
         ", type='" + type + '\'' +
         ", price=" + price +

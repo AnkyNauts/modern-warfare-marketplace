@@ -3,8 +3,8 @@ package com.demo.service;
 import com.demo.builder.ResponseBodyBuilder;
 import com.demo.dto.Item;
 import com.demo.dto.ResponseBody;
-import com.demo.dto.User;
 import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,6 @@ public class ActionService {
 
   @Autowired
   private PurchaseService purchaseService;
-
 
   @Autowired
   private ListingService listingService;
@@ -35,8 +34,8 @@ public class ActionService {
   }
 
   public ResponseBody performFetchItem(Integer userId) {
-    User user = fetchService.fetchAllItemsByUser(userId);
-    return responseBodyBuilder.buildResponse(user);
+    List<Item> items = fetchService.fetchAllItemsByUser(userId);
+    return responseBodyBuilder.buildResponse(items);
   }
 
   public ResponseBody fetchItemResponseWithErrorMessage(String message) {

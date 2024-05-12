@@ -5,7 +5,7 @@ import com.demo.dto.Item;
 import com.demo.dto.PropertyConstant;
 import com.demo.exception.InvalidItemException;
 import com.demo.model.ActionType;
-import com.demo.model.Item_Table;
+import com.demo.model.ItemTable;
 import com.demo.process.ActionState;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +38,7 @@ public class ListingService {
           state.performAction(null, itemId, resultMap);
         }
       }
-      Item_Table itemTable = (Item_Table) resultMap.get(PropertyConstant.ITEM_TABLE.name());
+      ItemTable itemTable = (ItemTable) resultMap.get(PropertyConstant.ITEM_TABLE.name());
       return itemBuilder.buildItem(itemTable);
     } catch (InvalidItemException exception) {
       return itemService.getItemListWithErrorMessage(exception.getMessage());

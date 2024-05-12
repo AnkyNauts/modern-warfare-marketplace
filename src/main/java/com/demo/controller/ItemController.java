@@ -1,8 +1,10 @@
 package com.demo.controller;
 
 import com.demo.dto.Item;
+import com.demo.dto.ItemInput;
 import com.demo.dto.ResponseBody;
-import com.demo.model.Item_Status;
+import com.demo.model.ItemTable;
+import com.demo.model.ItemStatus;
 import com.demo.service.ActionService;
 import com.demo.service.ItemService;
 import com.demo.service.ListingService;
@@ -38,7 +40,7 @@ public class ItemController {
   public ResponseEntity<List<Item>> fetchAllItemsListed() {
     try {
       return new ResponseEntity<>(
-          listingService.findListedItemsByStatus(Item_Status.FOR_SALE.name()), HttpStatus.OK);
+          listingService.findListedItemsByStatus(ItemStatus.FOR_SALE.name()), HttpStatus.OK);
     } catch (Exception exception) {
       return new ResponseEntity<>(
           Arrays.asList(
@@ -87,6 +89,16 @@ public class ItemController {
               "Unable to purchase item for userId " + user_id),
           HttpStatus.INTERNAL_SERVER_ERROR);
     }
+  }
+
+  @PostMapping()
+  public ItemTable addItem(ItemInput itemInput) {
+    try {
+      return itemService.saveItem(itemInput);
+    } catch (Exception exception) {
+      System.out.println("error " + exception);
+    }
+    return null;
   }
 
 }
