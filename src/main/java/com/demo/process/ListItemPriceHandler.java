@@ -4,6 +4,7 @@ import com.demo.dto.PropertyConstant;
 import com.demo.exception.InvalidItemException;
 import com.demo.model.ActionType;
 import com.demo.service.ItemService;
+import java.math.BigDecimal;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -12,6 +13,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(3)
 public class ListItemPriceHandler implements ActionState {
+
+  private BigDecimal MIN_PRICE = new BigDecimal(10);
+
+  private BigDecimal MAX_PRICE = new BigDecimal(1000);
 
   @Autowired
   private ItemService itemService;

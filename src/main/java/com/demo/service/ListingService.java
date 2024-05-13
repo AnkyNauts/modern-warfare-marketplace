@@ -7,6 +7,7 @@ import com.demo.exception.InvalidItemException;
 import com.demo.model.ActionType;
 import com.demo.model.ItemTable;
 import com.demo.process.ActionState;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class ListingService {
 
   public Item listItem(Integer itemId, Integer price) {
     Map<String, Object> resultMap = new HashMap<>();
-    resultMap.put(PropertyConstant.PRICE.name(), price);
+    resultMap.put(PropertyConstant.PRICE.name(), new BigDecimal(price));
     try {
       for (ActionState state : handlerList) {
         if (state.getActionType() == ActionType.LIST) {

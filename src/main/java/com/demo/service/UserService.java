@@ -4,6 +4,7 @@ import com.demo.dto.UserInput;
 import com.demo.model.UserAccount;
 import com.demo.repository.UserRepository;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,8 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  private Double SUPAKI_COMMISSION = 0.1;
+  private Integer SUPAKI_ACCOUNT_ID = 1;
+
 
   public UserAccount findUserByUserId(Integer userId) {
     return userRepository.findUserByUserId(userId);
@@ -32,10 +34,23 @@ public class UserService {
   }
 
   public UserAccount updateSupakiAccount(BigDecimal earnedPoints) {
-    UserAccount userAccount = findUserByUserId(1);
-    userAccount.setPointsEarned(userAccount.getPointsEarned().add(earnedPoints.multiply(
-        BigDecimal.valueOf(SUPAKI_COMMISSION))));
+    UserAccount userAccount = findUserByUserId(SUPAKI_ACCOUNT_ID);
+    userAccount.setPointsEarned(userAccount.getPointsEarned().add(earnedPoints));
     return userRepository.save(userAccount);
+  }
+
+  public UserAccount getPlayerUserAccount(BigDecimal earnedPoints, UserAccount userAccount) {
+    userAccount.setPointsEarned(getPointsEarned(userAccount).add(earnedPoints));
+    userAccount.setLastPurchaseDate(LocalDate.now());
+    return updateItem(userAccount);
+  }
+
+  private BigDecimal getPointsEarned(UserAccount userAccount) {
+    if (userAccount.getPointsEarned() != null) {
+      return userAccount.getPointsEarned();
+    } else {
+      return BigDecimal.ZERO;
+    }
   }
 
 }
